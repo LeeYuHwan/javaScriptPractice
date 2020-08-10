@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LightBox</title>  
+    <link rel="stylesheet" href="LightBox_css.css">
+</head>
+<body>	
+	<header>
+		<h1>light box</h1>
+		<img class="thumb" src="images/img01.jpg" width="100" onclick="lightbox_open(1)"/>
+		<img class="thumb" src="images/img02.jpg" width="100" onclick="lightbox_open(2)"/>
+		<img class="thumb" src="images/img03.jpg" width="100" onclick="lightbox_open(3)"/>
+	</header>
+	<div id = "lightbox">
+		<h1>메이플스토리 스크린샷입니당.</h1>
+		<p>메이플스토리 스크린샷입니다아아아아앙<br><br></p>
+		<figure>
+			<img src="images/img01.jpg" class="active" alt=""/>
+			<img src="images/img02.jpg" alt=""/>
+			<img src="images/img03.jpg" alt=""/>
+		</figure> 
+		<div class="indicator">
+			<button onclick="change_img(this.innerHTML)">1</button>
+			<button onclick="change_img(this.innerHTML)">2</button>
+			<button onclick="change_img(this.innerHTML)">3</button>
+		</div>
+		<div class="btn-close" onclick="lightbox_close()">X</div>
+	</div>
+    <script type="text/javascript" src="LightBox.js"></script>
+</body>
+</html>
