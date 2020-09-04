@@ -1,8 +1,9 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
+var router = express.Router();
+var path = require('path');
 var mysql = require('mysql');
-//var router = require('./router/index');
+
 var connection = mysql.createConnection({
     host : 'localhost',
     port : 3306,
@@ -13,29 +14,12 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-app.listen(3000, function(){
-    console.log("start express sever on port 3000!");
-});
-
-app.use(express.static("public"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.set('view engine', 'ejs');
-
-//app.use(router);
-
-app.get('/', function(req, res){
-    res.sendFile(__dirname + "/public/form.html");
-});
-
-app.post('/email_post', function(req, res){
-    //get : req.param('email');
-    console.log(req.body.email);
-    //res.send("<h1>welcome !" + req.body.email + "</h1>");
+router.post('/form', function(req, res){ 
+    console.log(req.body.email);   
     res.render('email.ejs', {'email' : req.body.email});
 });
 
-app.post('/ajax_send_email', function(req, res){
+router.post('/ajax_send_email', function(req, res){
     var email = req.body.email;
     var responseData = {};
 
@@ -52,3 +36,5 @@ app.post('/ajax_send_email', function(req, res){
         res.json(responseData);
     });   
 });
+
+module.exports = router;
