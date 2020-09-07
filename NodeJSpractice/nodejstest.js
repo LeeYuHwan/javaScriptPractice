@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var join = require('./router/join/index')
 //var router = require('./router/index');
 var connection = mysql.createConnection({
     host : 'localhost',
@@ -21,7 +22,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
-
+app.use('/join', join);
 //app.use(router);
 
 app.get('/', function(req, res){
