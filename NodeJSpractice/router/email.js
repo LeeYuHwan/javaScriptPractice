@@ -33,6 +33,7 @@ router.post('/ajax_send_email', function(req, res){
             responseData.result = "none";
             responseData.name = "";
         }
+        console.log(rows);
         res.json(responseData);
     });   
 });
